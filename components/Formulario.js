@@ -13,7 +13,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 
 
-const Formulario = ({busqueda,setBusqueda}) => {
+const Formulario = ({busqueda,setBusqueda,setConsultar}) => {
     const {ciudad,pais} = busqueda
 
     const [paises, setPaises] = useState();
@@ -33,17 +33,18 @@ const Formulario = ({busqueda,setBusqueda}) => {
     }
 
     const consultarClima = () => {
-        if (pais.trim() !== '' || ciudad.trim() !=='') {
+        if (pais.trim() === '' || ciudad.trim() ==='') {
          mostrarAlerta()
             
         }
+        setConsultar(true)
 
     }
 
     const mostrarAlerta =()=> {
         Alert.alert(
             "Hubo un error",
-            "Por favor digite todos los campos de texto",
+            "Agrega una ciudad y pais para la busqueda",
             [
                 {
                     text:'Ok'
